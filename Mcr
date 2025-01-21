@@ -10,7 +10,21 @@ def main():
         for row in game:
             print(" | ".join(row))
             print("-" * 5)  # Separator between rows
-    
+
+    def is_win(game):
+        # Check rows and columns
+        for i in range(3):
+            if game[i][0] == game[i][1] == game[i][2] != ' ':
+                return game[i][0]
+            if game[0][i] == game[1][i] == game[2][i] != ' ':
+                return game[0][i]
+        # Check diagonals
+        if game[0][0] == game[1][1] == game[2][2] != ' ':
+            return game[0][0]
+        if game[0][2] == game[1][1] == game[2][0] != ' ':
+            return game[0][2]
+        return None
+
     for n in range(9):
         print_board(game)
         turn = not turn  # Switch turns
